@@ -16,6 +16,14 @@ class App extends Component {
           .add(1, "days")
           .toDate(),
         title: "Some title"
+      },
+     {
+        title: 'string',
+        start: moment().toDate(),
+        end: moment()
+        .add(3, "days")
+        .toDate(),
+        allDay: false
       }
     ]
   };
@@ -23,6 +31,7 @@ class App extends Component {
   render() {
     return (
       <div className="App">
+        <button className="text-center">Add event</button>
         <Calendar
           localizer={localizer}
           defaultDate={new Date()}
