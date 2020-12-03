@@ -10,19 +10,11 @@ const localizer = momentLocalizer(moment);
 class App extends Component {
   state = {
     events: [
-      {
-        start: moment().toDate(),
-        end: moment()
-          .add(1, "days")
-          .toDate(),
-        title: "Some title"
-      },
      {
-        title: 'string',
+        title: 'Werk',
         start: moment().toDate(),
-        end: moment()
-        .add(3, "days")
-        .toDate(),
+        end: moment(),
+        
         allDay: false
       }
     ]
