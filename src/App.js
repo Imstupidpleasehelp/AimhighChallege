@@ -23,7 +23,8 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <button className="text-center">Add event</button>
+        <div className="text-center col-sm-12">
+        <input placeholder="start date" required></input><input placeholder="end date" required></input><input placeholder="Title" required></input> <br /> <button className="text-center">Add event</button></div>
         <Calendar
           localizer={localizer}
           defaultDate={new Date()}
