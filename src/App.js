@@ -10,21 +10,33 @@ const localizer = momentLocalizer(moment);
 class App extends Component {
   state = {
     events: [
-     {
-        title: 'Werk',
+      {
+        title: "Werk",
         start: moment().toDate(),
         end: moment(),
-        
-        allDay: false
-      }
-    ]
-  };
 
+        allDay: false,
+      },
+    ],
+  };
+  myChangeHandler = (event) => {
+    this.setState({ title: event.target.value });
+  };
   render() {
     return (
       <div className="App">
-        <div className="text-center col-sm-12">
-        <input placeholder="start date" required></input><input placeholder="end date" required></input><input placeholder="Title" required></input> <br /> <button className="text-center">Add event</button></div>
+        <form>
+          <div className="text-center col-sm-12">
+            <input placeholder="start date" required></input>
+            <input placeholder="end date" required></input>
+            <input
+              placeholder="Title"
+              onChange={this.myChangeHandler}
+              required
+            ></input>{" "}
+            <br /> <button className="text-center">Add event</button>
+          </div>
+        </form>
         <Calendar
           localizer={localizer}
           defaultDate={new Date()}
@@ -33,16 +45,17 @@ class App extends Component {
           style={{ height: "100vh" }}
         />
         <div className="list">
-        <ul>
-       <li>Display Weekly view X</li>
-       <li>Highlight today X</li>
-       <li>Allow navigation to different weeks X</li>
-       <li>allow adding new events</li>
-       <li>allow editing existing events</li>
-       <li>allow deleting events</li>
-       <li>Persisting data </li>
-       <li>Use apis to load and save data </li>
-     </ul></div>
+          <ul>
+            <li>Display Weekly view X</li>
+            <li>Highlight today X</li>
+            <li>Allow navigation to different weeks X</li>
+            <li>allow adding new events</li>
+            <li>allow editing existing events</li>
+            <li>allow deleting events</li>
+            <li>Persisting data </li>
+            <li>Use apis to load and save data </li>
+          </ul>
+        </div>
       </div>
     );
   }
