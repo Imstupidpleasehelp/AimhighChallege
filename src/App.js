@@ -30,6 +30,17 @@ class App extends Component {
           events={this.state.events}
           style={{ height: "100vh" }}
         />
+        <div className="list">
+        <ul>
+       <li>Display Weekly view X</li>
+       <li>Highlight today X</li>
+       <li>Allow navigation to different weeks X</li>
+       <li>allow adding new events</li>
+       <li>allow editing existing events</li>
+       <li>allow deleting events</li>
+       <li>Persisting data </li>
+       <li>Use apis to load and save data </li>
+     </ul></div>
       </div>
     );
   }
