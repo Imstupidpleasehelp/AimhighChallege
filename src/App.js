@@ -20,21 +20,13 @@ const App = () => {
     <div className="App">
       <form>
         <input
-          placeholder="start date"
-          value={events.start}
+          placeholder="Name"
           onChange={(e) =>
-            setEvents({ ...events, start: parseFloat(e.target.value) })
+            setEvents([{ ...events, title: e.target.value }, console.log(events.title)])
           }
           required
         ></input>
-        <input
-          placeholder="End date"
-          value={events.start}
-          onChange={(e) =>
-            setEvents({ ...events, start: parseFloat(e.target.value) })
-          }
-          required
-        ></input>
+        
       </form>
       <Calendar
         localizer={localizer}
