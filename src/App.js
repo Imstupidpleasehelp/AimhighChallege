@@ -7,27 +7,50 @@ import "react-big-calendar/lib/css/react-big-calendar.css";
 
 const localizer = momentLocalizer(moment);
 const App = () => {
+  const [eventValue, setEventValue] = useState("");
+  const [startValue, setStartValue] = useState("");
   const [events, setEvents] = useState([
     {
       title: "Werk",
-      start: moment().toDate(),
+      start: moment(),
       end: moment(),
-      allDay: false,
-    },
+      allDay: false
+    }
   ]);
+
+  const addEvent = (e) => {
+    const newEvents = [...events];
+    newEvents.push({
+      title: eventValue,
+      start: startValue,
+      end: moment()
+    });
+    setEvents(newEvents);
+  };
 
   return (
     <div className="App">
-      <form>
+      <div className="event-input">
+        <label for="eventInput">Event:&nbsp;</label>
         <input
-          placeholder="Name"
-          onChange={(e) =>
-            setEvents([{ ...events, title: e.target.value }, console.log(events.title)])
-          }
-          required
-        ></input>
-        
-      </form>
+          id="eventInput"
+          name="eventInput"
+          value={eventValue}
+          onChange={(e) => {
+            setEventValue(e.target.value);
+          }}
+        />
+        <label for="eventInput">Start&nbsp;</label>
+        <input
+          id="eventInput"
+          name="eventInput"
+          value={startValue}
+          onChange={(e) => {
+            setStartValue(e.target.value);
+          }}
+        />
+        <button onClick={addEvent}>Add event</button>
+      </div>
       <Calendar
         localizer={localizer}
         defaultDate={new Date()}
