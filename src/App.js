@@ -11,7 +11,7 @@ const App = () => {
   const [startValue, setStartValue] = useState("");
   const [events, setEvents] = useState([
     {
-      title: "Werk",
+      title: "Finish Calendar",
       start: moment(),
       end: moment(),
       allDay: false
@@ -24,9 +24,10 @@ const App = () => {
       title: eventValue,
       start: startValue,
       end: moment()
-    });
+    });console.log(events)
     setEvents(newEvents);
   };
+  const startOfMonth = moment().startOf('month').format('DD')
 
   return (
     <div className="App">
@@ -42,11 +43,12 @@ const App = () => {
         />
         <label for="eventInput">Start&nbsp;</label>
         <input
-          id="eventInput"
-          name="eventInput"
+          id="startInput"
+          name="startInput"
           value={startValue}
           onChange={(e) => {
-            setStartValue(e.target.value);
+           
+           setStartValue(parseInt(startOfMonth) + parseInt(e.target.value) -1)
           }}
         />
         <button onClick={addEvent}>Add event</button>
