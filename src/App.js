@@ -14,8 +14,8 @@ const App = () => {
       title: "Finish Calendar",
       start: moment(),
       end: moment(),
-      allDay: false,
-    },
+      allDay: false
+    }
   ]);
 
   const addEvent = (e) => {
@@ -23,43 +23,40 @@ const App = () => {
     newEvents.push({
       title: eventValue,
       start: moment().date(startValue),
-      end: moment().date(startValue),
-    });
-    
+      end: moment().date(startValue)
+    });console.log(events)
     setEvents(newEvents);
   };
-  const cancelCourse = () => {
+  const clearForm = () => { 
     document.getElementById("form").reset();
-  };
-  const startOfMonth = moment().startOf("month").format("DD");
+  }
+  const startOfMonth = moment().startOf('month').format('DD')
 
   return (
     <div className="App">
-      <form onSubmit={cancelCourse}>
-        <div className="event-input">
-          <label for="eventInput">Event:&nbsp;</label>
-          <input
-            id="eventInput"
-            name="eventInput"
-            value={eventValue}
-            onChange={(e) => {
-              setEventValue(e.target.value);
-            }}
-          />
-          <label for="eventInput">Start&nbsp;</label>
-          <input
-            id="startInput"
-            name="startInput"
-            value={startValue}
-            onChange={(e) => {
-              setStartValue(
-                parseInt(startOfMonth) + parseInt(e.target.value) - 1
-              );
-            }}
-          />
-          <button onClick={addEvent}>Add event</button>
-        </div>
-      </form>
+      
+      <div className="event-input">
+        <label for="eventInput">Event:&nbsp;</label>
+        <input
+          id="eventInput"
+          name="eventInput"
+          value={eventValue}
+          onChange={(e) => {
+            setEventValue(e.target.value);
+          }}
+        />
+        <label for="eventInput">Start&nbsp;</label>
+        <input
+          id="startInput"
+          name="startInput"
+          value={startValue}
+          onChange={(e) => {
+            
+           setStartValue(parseInt(startOfMonth) + parseInt(e.target.value) -1)
+          }}
+        />
+        <button onClick={addEvent}  >Add event</button>
+      </div>
       <Calendar
         localizer={localizer}
         defaultDate={new Date()}
