@@ -18,12 +18,30 @@ const App = () => {
 
   return (
     <div className="App">
+      <form>
+        <input
+          placeholder="start date"
+          value={events.start}
+          onChange={(e) =>
+            setEvents({ ...events, start: parseFloat(e.target.value) })
+          }
+          required
+        ></input>
+        <input
+          placeholder="End date"
+          value={events.start}
+          onChange={(e) =>
+            setEvents({ ...events, start: parseFloat(e.target.value) })
+          }
+          required
+        ></input>
+      </form>
       <Calendar
         localizer={localizer}
         defaultDate={new Date()}
         defaultView="month"
         events={events}
-        style={{ height: "100vh" }}
+        style={{ height: "75vh" }}
       />
       <div className="list">
         <ul>
