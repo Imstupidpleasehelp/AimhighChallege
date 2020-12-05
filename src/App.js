@@ -14,45 +14,52 @@ const App = () => {
       title: "Finish Calendar",
       start: moment(),
       end: moment(),
-      allDay: false
-    }
+      allDay: false,
+    },
   ]);
 
   const addEvent = (e) => {
     const newEvents = [...events];
     newEvents.push({
       title: eventValue,
-      start: startValue,
-      end: moment()
-    });console.log(events)
+      start: moment().date(startValue),
+      end: moment().date(startValue),
+    });
+    
     setEvents(newEvents);
   };
-  const startOfMonth = moment().startOf('month').format('DD')
+  const cancelCourse = () => {
+    document.getElementById("form").reset();
+  };
+  const startOfMonth = moment().startOf("month").format("DD");
 
   return (
     <div className="App">
-      <div className="event-input">
-        <label for="eventInput">Event:&nbsp;</label>
-        <input
-          id="eventInput"
-          name="eventInput"
-          value={eventValue}
-          onChange={(e) => {
-            setEventValue(e.target.value);
-          }}
-        />
-        <label for="eventInput">Start&nbsp;</label>
-        <input
-          id="startInput"
-          name="startInput"
-          value={startValue}
-          onChange={(e) => {
-           
-           setStartValue(parseInt(startOfMonth) + parseInt(e.target.value) -1)
-          }}
-        />
-        <button onClick={addEvent}>Add event</button>
-      </div>
+      <form onSubmit={cancelCourse}>
+        <div className="event-input">
+          <label for="eventInput">Event:&nbsp;</label>
+          <input
+            id="eventInput"
+            name="eventInput"
+            value={eventValue}
+            onChange={(e) => {
+              setEventValue(e.target.value);
+            }}
+          />
+          <label for="eventInput">Start&nbsp;</label>
+          <input
+            id="startInput"
+            name="startInput"
+            value={startValue}
+            onChange={(e) => {
+              setStartValue(
+                parseInt(startOfMonth) + parseInt(e.target.value) - 1
+              );
+            }}
+          />
+          <button onClick={addEvent}>Add event</button>
+        </div>
+      </form>
       <Calendar
         localizer={localizer}
         defaultDate={new Date()}
@@ -65,7 +72,7 @@ const App = () => {
           <li>Display Weekly view X</li>
           <li>Highlight today X</li>
           <li>Allow navigation to different weeks X</li>
-          <li>allow adding new events</li>
+          <li>allow adding new events X</li>
           <li>allow editing existing events</li>
           <li>allow deleting events</li>
           <li>Persisting data </li>
