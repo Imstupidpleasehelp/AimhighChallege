@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Calendar, momentLocalizer, Views } from "react-big-calendar";
 import moment from "moment";
 
@@ -29,7 +29,12 @@ const App = () => {
     console.log(events);
     setEvents(newEvents);
   };
-
+{/* useEffect(() => {
+  window.addEventListener(event, handler, passive)
+  return () => {
+    cleanup
+  }
+}, [input]) */}
   const startOfMonth = moment().startOf("month").format("DD");
 
   return (
@@ -70,18 +75,19 @@ const App = () => {
       <div className="row">
         <div className="list col-sm-6">
           <ul>
-            <li>Display Weekly view X</li>
-            <li>Highlight today X</li>
-            <li>Allow navigation to different weeks X</li>
-            <li>allow adding new events X</li>
+            <li>Display Weekly view (X)</li>
+            <li>Highlight today (X)</li>
+            <li>Allow navigation to different weeks (X)</li>
+            <li>allow adding new events (X)</li>
             <li>allow editing existing events</li>
-            <li>allow deleting events</li>
-            <li>Persisting data </li>
-            <li>Use apis to load and save data </li>
+            <li>allow deleting events </li>
+            <li>Persisting data (ran out of time)</li>
+            <li>Use apis to load and save data (ran out of time)</li>
           </ul>
         </div>
         <div className="col-sm-6">
-
+        
+          
         </div>
       </div>
     </div>
