@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Calendar, momentLocalizer, Views } from "react-big-calendar";
-import moment from "moment";
+import moment, { months } from "moment";
 
 import { v4 as uuidV4 } from "uuid";
 import "./App.css";
@@ -18,8 +18,8 @@ const App = () => {
       title: "Finish Calendar",
       start: moment(),
       end: moment(),
-      allDay: false
-    }
+      allDay: false,
+    },
   ]);
 
   const addEvent = (e) => {
@@ -31,7 +31,7 @@ const App = () => {
                 ...event,
                 title: eventTitle,
                 start: eventStart,
-                end: eventStart
+                end: eventStart,
               }
             : event
         )
@@ -44,8 +44,8 @@ const App = () => {
           id: uuidV4(),
           title: eventTitle,
           start: moment().date(eventStart),
-          end: moment().date(eventStart)
-        }
+          end: moment().date(eventStart),
+        },
       ]);
     }
     setEventTitle("");
@@ -72,6 +72,22 @@ const App = () => {
   return (
     <div className="App">
       <div className="text-center">
+      <div className="container">
+          <p>
+            To add an event, simply add a name and a day of the month in the
+            input boxes
+          </p>{" "}
+          <br />
+          <p>
+            To edit an event, click on the event you wish to edit and change the
+            name or time with the input boxes
+          </p>{" "}
+          <br />
+          <p>
+            To delete an event, click on the event you wish to delete, and
+            delete the name of the event.
+          </p>
+        </div>
         <div className="event-input">
           <label>
             Event:
@@ -108,14 +124,15 @@ const App = () => {
             </button>
           )}
         </div>
+       
       </div>
       <Calendar
         localizer={localizer}
         defaultDate={new Date()}
         defaultView="month"
-        views={allViews}
+        views={months}
         events={events}
-        style={{ height: "65vh" }}
+        style={{ height: "65vh", width: "100vw" }}
         onSelectEvent={selectEventHandler}
       />
       <div className="row">
@@ -131,9 +148,8 @@ const App = () => {
             <li>Use apis to load and save data (ran out of time)</li>
           </ul>
         </div>
-        
       </div>
     </div>
   );
 };
-export default App 
+export default App;
