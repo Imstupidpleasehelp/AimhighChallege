@@ -1,7 +1,8 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { Calendar, momentLocalizer, Views } from "react-big-calendar";
 import moment from "moment";
 
+import { v4 as uuidV4 } from "uuid";
 import "./App.css";
 import "react-big-calendar/lib/css/react-big-calendar.css";
 let allViews = Object.keys(Views).map((k) => Views[k]);
@@ -12,6 +13,7 @@ const App = () => {
   const [startValue, setStartValue] = useState("");
   const [events, setEvents] = useState([
     {
+      id: uuidV4(),
       title: "Finish Calendar",
       start: moment(),
       end: moment(),
@@ -26,15 +28,10 @@ const App = () => {
       start: moment().date(startValue),
       end: moment().date(startValue),
     });
-    console.log(events);
+   
     setEvents(newEvents);
   };
-{/* useEffect(() => {
-  window.addEventListener(event, handler, passive)
-  return () => {
-    cleanup
-  }
-}, [input]) */}
+ 
   const startOfMonth = moment().startOf("month").format("DD");
 
   return (
@@ -70,6 +67,7 @@ const App = () => {
         defaultView="month"
         views={allViews}
         events={events}
+        onSelectEvent={(event, e) => console.log('Selected event', event)}
         style={{ height: "65vh" }}
       />
       <div className="row">
