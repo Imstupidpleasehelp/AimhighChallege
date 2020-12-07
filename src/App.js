@@ -89,8 +89,8 @@ const App = () => {
           </p>
         </div>
         <div className="event-input">
-          <label>
-            Event:
+          <label className="label">
+            Event: (Example: Walk dog) <br />
             <input
               id="eventInput"
               name="eventInput"
@@ -101,8 +101,8 @@ const App = () => {
             />
           </label>
           <br />
-          <label>
-            Start:
+          <label className="label">
+          Day: (example: 1) <br />
             <input
               id="startInput"
               name="startInput"
@@ -116,13 +116,14 @@ const App = () => {
           </label>
           <br />
           <button type="button" onClick={addEvent}>
-            {editEvent ? "Edit" : "Add"} event
+            {editEvent ? "Save new" : "Add"} event
           </button>
           {editEvent && (
             <button type="button" onClick={cancelEditMode}>
-              Cancel
+              Cancel Edit 
             </button>
           )}
+          
         </div>
        
       </div>

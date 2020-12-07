@@ -1,3 +1,1 @@
-# React Big Calendar
-
-A plain ole' react-big-calendar.
+All the instructions are on the page, I tried to make them as easy to use as possible. 
